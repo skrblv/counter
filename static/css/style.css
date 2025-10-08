@@ -1,0 +1,66 @@
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: #f8f9fa; /* Светло-серый фон */
+}
+
+/* Выравнивание иконки в названии бренда */
+.navbar-brand i {
+    vertical-align: middle;
+}
+
+/* Стили для карточек (cards) */
+.card {
+    border-radius: 1rem; /* Скругленные углы */
+    border: none;        /* Без стандартной границы */
+    overflow: hidden;    /* Важно для плавных углов с градиентами/тенями */
+}
+
+/* Стили для заголовков карточек */
+.card-title {
+    font-weight: 600; /* Полужирный текст */
+    color: #343a40;   /* Темно-серый цвет текста */
+}
+
+/* Стили для больших круглых кнопок (+/-) */
+.btn-lg.rounded-circle {
+    border-radius: 50% !important; /* Убеждаемся, что кнопка идеально круглая */
+    transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out; /* Плавные переходы */
+}
+
+/* Эффект при наведении на круглые кнопки */
+.btn-lg.rounded-circle:hover {
+    transform: translateY(-3px); /* Немного приподнимаем кнопку */
+    box-shadow: 0 5px 15px rgba(0,0,0,0.2); /* Добавляем тень */
+}
+
+/* Пользовательский градиент для главной карточки на home.html */
+.bg-gradient-light-info {
+    background: linear-gradient(135deg, #e0f2f7 0%, #ffffff 100%); /* Градиент от голубоватого к белому */
+}
+
+/* Пользовательские цвета для карточек статистики */
+.bg-info { background-color: #17a2b8 !important; }    /* Bootstrap info color */
+.bg-warning { background-color: #ffc107 !important; } /* Bootstrap warning color */
+.bg-success { background-color: #28a745 !important; } /* Bootstrap success color */
+.bg-danger { background-color: #dc3545 !important; }  /* Bootstrap danger color */
+
+/* Убеждаемся, что заголовки карточек со специфическим фоном белые */
+.bg-info.text-white .card-title,
+.bg-warning.text-white .card-title,
+.bg-success.text-white .card-title,
+.bg-danger.text-white .card-title {
+    color: white !important;
+}
+
+/* Стили для элементов списка статистики (daily_breakdown) */
+.list-group-item {
+    border-radius: 0.75rem; /* Скругленные углы */
+    margin-bottom: 0.5rem; /* Отступ между элементами */
+    border: 1px solid rgba(0,0,0,.125); /* Тонкая граница */
+    box-shadow: 0 0.125rem 0.25rem rgba(0,0,0,.075); /* Небольшая тень */
+}
+
+/* Убираем нижний отступ у последнего элемента списка */
+.list-group-item:last-child {
+    margin-bottom: 0;
+}

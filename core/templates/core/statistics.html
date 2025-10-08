@@ -1,0 +1,65 @@
+{% extends 'base.html' %} {# Наследуем от базового шаблона #}
+
+{% block title %}Статистика{% endblock %} {# Заголовок страницы #}
+
+{% block content %}
+    <h1 class="mb-4 text-center text-primary">Ваша Статистика по Разноцветным Волосам</h1>
+
+    <div class="row">
+        {# Карточка для общего количества #}
+        <div class="col-md-4 mb-4">
+            <div class="card text-center p-3 shadow-sm bg-info text-white">
+                <div class="card-body">
+                    <h5 class="card-title">Общее количество</h5>
+                    <p class="card-text display-4 fw-bold">{{ total_count }}</p>
+                </div>
+            </div>
+        </div>
+        {# Карточка для статистики за сегодня #}
+        <div class="col-md-4 mb-4">
+            <div class="card text-center p-3 shadow-sm bg-warning text-white">
+                <div class="card-body">
+                    <h5 class="card-title">За сегодня</h5>
+                    <p class="card-text display-4 fw-bold">{{ daily_count }}</p>
+                </div>
+            </div>
+        </div>
+        {# Карточка для статистики за последние 7 дней #}
+        <div class="col-md-4 mb-4">
+            <div class="card text-center p-3 shadow-sm bg-success text-white">
+                <div class="card-body">
+                    <h5 class="card-title">За последние 7 дней</h5>
+                    <p class="card-text display-4 fw-bold">{{ weekly_count }}</p>
+                </div>
+            </div>
+        </div>
+        {# Карточка для статистики за последние 30 дней #}
+        <div class="col-md-4 mb-4">
+            <div class="card text-center p-3 shadow-sm bg-danger text-white">
+                <div class="card-body">
+                    <h5 class="card-title">За последние 30 дней</h5>
+                    <p class="card-text display-4 fw-bold">{{ monthly_count }}</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <h2 class="mt-5 mb-3 text-center text-secondary">Подробная статистика по дням (последние 7)</h2>
+    <div class="row justify-content-center">
+        <div class="col-md-8">
+            <div class="list-group shadow-sm">
+                {# Цикл по детализированным данным за последние 7 дней #}
+                {% for entry in daily_breakdown %}
+                    <li class="list-group-item d-flex justify-content-between align-items-center">
+                        {# Форматируем дату в читаемый вид #}
+                        <strong>{{ entry.timestamp__date|date:"d M Y" }}</strong>
+                        {# Отображаем сумму за этот день #}
+                        <span class="badge bg-primary rounded-pill">{{ entry.day_total }}</span>
+                    </li>
+                {% empty %} {# Если нет данных за этот период #}
+                    <li class="list-group-item text-center text-muted">Пока нет данных за последние 7 дней.</li>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+{% endblock %}

@@ -1,0 +1,34 @@
+{% extends 'base.html' %} {# Наследуем от базового шаблона #}
+
+{% block title %}Главная{% endblock %} {# Заголовок страницы #}
+
+{% block content %}
+    <div class="row justify-content-center">
+        <div class="col-md-8 col-lg-6">
+            <div class="card shadow-lg p-5 text-center bg-gradient-light-info">
+                <h1 class="display-4 mb-4 text-primary">Я увидел людей с разноцветными волосами:</h1>
+                {# Выводим текущее общее количество. fw-bold делает текст жирным. #}
+                <p class="display-1 fw-bold text-success">{{ total_count }}</p>
+
+                <div class="d-flex justify-content-center mt-5">
+                    {# Форма для уменьшения счетчика #}
+                    <form method="post" action="{% url 'decrement_count' %}" class="me-3">
+                        {% csrf_token %} {# CSRF-токен #}
+                        <button type="submit" class="btn btn-danger btn-lg rounded-circle" style="width: 80px; height: 80px; font-size: 2.5rem;">
+                            <i class="bi bi-dash-lg"></i> {# Иконка минуса #}
+                        </button>
+                    </form>
+                    {# Форма для увеличения счетчика #}
+                    <form method="post" action="{% url 'increment_count' %}">
+                        {% csrf_token %} {# CSRF-токен #}
+                        <button type="submit" class="btn btn-success btn-lg rounded-circle" style="width: 80px; height: 80px; font-size: 2.5rem;">
+                            <i class="bi bi-plus-lg"></i> {# Иконка плюса #}
+                        </button>
+                    </form>
+                </div>
+                <p class="mt-4 text-muted">Нажмите + чтобы добавить, - чтобы уменьшить</p>
+                <a href="{% url 'statistics' %}" class="btn btn-outline-primary mt-4">Посмотреть статистику</a>
+            </div>
+        </div>
+    </div>
+{% endblock %}
